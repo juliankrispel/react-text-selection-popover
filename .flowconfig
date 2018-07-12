@@ -1,0 +1,16 @@
+[ignore]
+.*/example/node_modules/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.system=haste
+
+[strict]
+
+[version]
+^0.76.0
