@@ -185,7 +185,9 @@ const wrapPortal = Comp => ({ children, ...props }) =>
 
 Popover.propTypes = {
   measure: PropTypes.func.isRequired,
-  selectionRef: PropTypes.instanceOf(Element),
+  selectionRef: PropTypes.shape({
+    current: PropTypes.instanceOf(Element ),
+  }),
   children: PropTypes.node.isRequired,
   onTextSelect: PropTypes.func,
   onTextUnselect: PropTypes.func,
