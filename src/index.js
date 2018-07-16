@@ -143,7 +143,7 @@ class Popover extends Component {
         this.setState({ position });
       }
     } else if(this.state.isTextSelected) {
-      onTextUnselect();
+      onTextUnselect && onTextUnselect();
     }
   };
 
@@ -166,7 +166,7 @@ class Popover extends Component {
         target={document}
         onSelectionChange={this.updatePosition}
       />,
-      position == null || !isOpen ? null : (
+      (position == null || !isOpen) ? null : (
         <div key="popup" className={className} style={style} ref={measureRef}>
           {children}
         </div>
