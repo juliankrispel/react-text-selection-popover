@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import Popover from 'react-text-selection-popover';
+
+const Bar = styled.div`
+  background: #000;
+  border-radius: 3px;
+  color: #fff;
+  width: 400px;
+  padding: 1em;
+`;
 
 export default class App extends Component {
   state = {
@@ -25,14 +34,12 @@ export default class App extends Component {
         <p>And this should not</p>
       </div>
       <Popover
-        onTextSelect={() => this.setState({ hasSelection: true })}
-        onTextUnselect={() => this.setState({ hasSelection: false })}
-        isOpen={this.state.hasSelection}
+        isOpen
         selectionRef={this.ref}
         defaultDirection="above"
       >
-        Hello
+        <Bar>Hello</Bar>
       </Popover>
-    </div>
+    </div>;
   }
 }

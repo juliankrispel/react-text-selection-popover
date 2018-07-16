@@ -153,7 +153,7 @@ class Popover extends Component {
     const { position } = this.state;
 
     let style = {};
-    if (position !== null) {
+    if (position !== null && props.contentRect.bounds.width != null) {
       style = getStyle({
         ...props,
         position
