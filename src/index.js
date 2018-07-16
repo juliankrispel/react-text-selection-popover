@@ -123,7 +123,7 @@ class Popover extends Component {
   updatePosition = () => {
     const browserSelection = document.getSelection();
     const { onTextSelect, onTextUnselect } = this.props;
-    const selectionRef = this.props.selectionRef.current;
+    const selectionRef = this.props.selectionRef && this.props.selectionRef.current;
 
     if (
       selectionRef != null &&
