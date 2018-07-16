@@ -131,10 +131,10 @@ class Popover extends Component {
       selectionRef.contains(browserSelection.baseNode) === true
     ) {
       if (browserSelection.isCollapsed === false) {
-        onTextSelect();
+        onTextSelect && onTextSelect();
         this.setState({ isTextSelected: true });
       } else {
-        onTextUnselect();
+        onTextUnselect && onTextUnselect();
         this.setState({ isTextSelected: false });
       }
 
