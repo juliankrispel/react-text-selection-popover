@@ -4,12 +4,51 @@ import styled from 'styled-components';
 import Popover from 'react-text-selection-popover';
 
 const Bar = styled.div`
-  background: #000;
+  background: #fff;
   border-radius: 3px;
-  color: #fff;
-  width: 400px;
-  padding: 1em;
+  overflow: hidden;
+  transition: 300ms;
+  display: flex;
+  user-select: none;
 `;
+
+const Button = styled.button`
+  padding: 1em;
+  cursor: pointer;
+  color: #fff;
+  font-size: inherit;
+  text-transform: uppercase;
+  outline: none;
+  font-weight: bold;
+  transition: 300ms;
+  transform: scale(1);
+  &:hover{
+    transform: scale(1.15);
+  }
+  border: none;
+  background: ${props => props.bg};
+`
+
+const Main = styled.main`
+  background: #000;
+  padding: 2em;
+  line-height: 1.5em;
+  font-size: 1.3em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+`;
+
+const Wrapper = styled.div`
+`
+
 
 export default class App extends Component {
   state = {
@@ -22,24 +61,43 @@ export default class App extends Component {
   }
 
   render () {
-    return <div>
-      <div ref={this.ref}>
-        <p>Hello friend this should be selected</p>
-        <p>Hello friend this should be selected</p>
-        <p>Hello friend this should be selected</p>
-        <p>Hello friend this should be selected</p>
-        <p>Hello friend this should be selected</p>
-      </div>
-      <div>
-        <p>And this should not</p>
-      </div>
+    return <Main>
+      <Wrapper>
+        <div ref={this.ref}>
+          <p>So this text should trigger the popover when any of it is selected</p>
+        </div>
+        <div>
+          <p>And this block should not</p>
+        </div>
+      </Wrapper>
       <Popover
-        isOpen
+        isOpen={this.state.hasSelection}
+        onTextSelect={() => this.setState({hasSelection: true})}
+        onTextUnselect={() => this.setState({hasSelection: false})}
         selectionRef={this.ref}
         defaultDirection="above"
       >
-        <Bar>Hello</Bar>
+        <Bar>
+          <Button
+            bg="#5595ff"
+            onClick={() => alert('Boing')}
+          >
+            Click me
+          </Button>
+          <Button
+            bg="#e257b5"
+            onClick={() => alert('Bang')}
+          >
+            Or me
+          </Button>
+          <Button
+            bg="#ffa935"
+            onClick={() => alert('Boom')}
+          >
+            Or me
+          </Button>
+        </Bar>
       </Popover>
-    </div>;
+    </Main>;
   }
 }

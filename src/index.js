@@ -116,6 +116,7 @@ const getStyle = ({
 
 class Popover extends Component {
   state = {
+    isPressed: false,
     position: null,
     isTextSelected: false
   };
@@ -148,7 +149,7 @@ class Popover extends Component {
   };
 
   render() {
-    const { measureRef, isOpen, children, className, ...props } = this.props;
+    const { selectionRef, measureRef, isOpen, children, className, ...props } = this.props;
 
     const { position } = this.state;
 
@@ -158,13 +159,25 @@ class Popover extends Component {
         ...props,
         position
       });
+
+      style.pointerEvents = this.state.mousePressed === true ? 'none' : 'auto';
     }
 
     return [
       <EventListener
-        key="event-listener"
+        key="update-position"
         target={document}
         onSelectionChange={this.updatePosition}
+      />,
+      <EventListener
+        key="on-mouse-up"
+        target={(selectionRef && selectionRef.current) || document}
+        onMouseUp={() => this.setState({ mousePressed: false })}
+      />,
+      <EventListener
+        key="on-mouse-down"
+        target={(selectionRef && selectionRef.current) || document}
+        onMouseDown={() => this.setState({ mousePressed: true })}
       />,
       (position == null || !isOpen) ? null : (
         <div key="popup" className={className} style={style} ref={measureRef}>
