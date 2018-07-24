@@ -19,7 +19,7 @@ var isChrome = /chrome/gi.test(window.navigator.userAgent);
 // start tag and join the client rects together.
 // https://code.google.com/p/chromium/issues/detail?id=324437
 /* eslint-disable consistent-return */
-function getRangeClientRectsChrome(range: Range): Array<ClientRect> {
+function getRangeClientRectsChrome(range) {
   var tempRange = range.cloneRange();
   var clientRects = [];
 
@@ -56,7 +56,7 @@ function getRangeClientRectsChrome(range: Range): Array<ClientRect> {
  */
 var getRangeClientRects = isChrome
   ? getRangeClientRectsChrome
-  : function(range: Range): Array<ClientRect> {
+  : function(range) {
       return Array.from(range.getClientRects());
     };
 
@@ -110,7 +110,7 @@ function getRangeBoundingClientRect(range) {
  * In cases where there are no selected ranges or the bounding rect is
  * temporarily invalid, return null.
  */
-function getVisibleSelectionRect(global: any): ?FakeClientRect {
+function getVisibleSelectionRect(global) {
   const selection = global.getSelection();
   if (!selection.rangeCount) {
     return null;
