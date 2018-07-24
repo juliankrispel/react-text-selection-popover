@@ -47,9 +47,7 @@ class Example extends Component {
 }
 ```
 
-## `<Popover />` API
-
-### Props
+## `<Popover />` Props
 
 | Property | Type | required? | Description |
 | - | - | - | - |
