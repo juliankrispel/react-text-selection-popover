@@ -7,7 +7,7 @@ export const Bar = styled.div`
   transition: 300ms;
   display: flex;
   user-select: none;
-  h1{
+  p{
     margin: 0;
     padding: 1em;
   }

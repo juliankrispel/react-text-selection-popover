@@ -34,22 +34,22 @@ class Example extends Component {
         <p ref={this.ref}>
           Select this text 
         </p>
-        <Popover
-          onTextSelect={()=> this.setState({ textSelected: true })}
-          onTextUnSelect={()=> this.setState({ textSelected: false })}
-          selectionRef={this.ref}
-        >
-          <MyAwesomeComponent />
-        </Popover>
-      </div>
+<Popover
+  onTextSelect={()=> this.setState({ textSelected: true })}
+  onTextUnSelect={()=> this.setState({ textSelected: false })}
+  selectionRef={this.ref}
+>
+  <MyAwesomeComponent />
+</Popover>
+</div>
     )
   }
 }
 ```
 
-## API
+## `<Popover />` API
 
-### Popover<Props>
+### Props
 
 | Property | Type | required? | Description |
 | - | - | - | - |

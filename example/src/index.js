@@ -19,7 +19,7 @@ class App extends Component {
     return <Main>
       <div>
         <p ref={this.refParagraph}>
-          So this text should trigger the popover when any of it is selected
+          Selecting this text triggers the popover!
         </p>
         <pre ref={this.refCode}>{`<Popover
   isOpen={this.state.isOpen}
@@ -31,7 +31,6 @@ class App extends Component {
   <MakeItalic onPress={this.onMakeItalic}/>
 </Popover>`}
         </pre>
-        <p>And this block should not</p>
       </div>
       <Popover
         isOpen={this.state.selection === 'paragraph'}
@@ -70,7 +69,7 @@ class App extends Component {
         defaultDirection="above"
       >
         <Bar bg="yellow">
-          <h1>Simples</h1>
+          <p>And this code is all you really need! <strong>Simples!</strong></p>
         </Bar>
       </Popover>
     </Main>;
