@@ -124,7 +124,8 @@ class Popover extends Component {
   updatePosition = () => {
     const browserSelection = document.getSelection();
     const { onTextSelect, onTextUnselect } = this.props;
-    const selectionRef = this.props.selectionRef && this.props.selectionRef.current;
+    const selectionRef =
+      this.props.selectionRef && this.props.selectionRef.current;
 
     if (
       selectionRef != null &&
@@ -143,14 +144,21 @@ class Popover extends Component {
       if (position != null) {
         this.setState({ position });
       }
-    } else if(this.state.isTextSelected) {
+    } else if (this.state.isTextSelected) {
       onTextUnselect && onTextUnselect();
       this.setState({ isTextSelected: false });
     }
   };
 
   render() {
-    const { selectionRef, measureRef, isOpen, children, className, ...props } = this.props;
+    const {
+      selectionRef,
+      measureRef,
+      isOpen,
+      children,
+      className,
+      ...props
+    } = this.props;
 
     const { position } = this.state;
 
@@ -161,7 +169,7 @@ class Popover extends Component {
         position
       });
 
-      style.pointerEvents = this.state.mousePressed === true ? 'none' : 'auto';
+      style.pointerEvents = this.state.mousePressed === true ? "none" : "auto";
     }
 
     return [
@@ -180,7 +188,7 @@ class Popover extends Component {
         target={(selectionRef && selectionRef.current) || document}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
-      (position == null || !isOpen) ? null : (
+      position == null || !isOpen ? null : (
         <div key="popup" className={className} style={style} ref={measureRef}>
           {children}
         </div>
@@ -200,7 +208,7 @@ const wrapPortal = Comp => ({ children, ...props }) =>
 Popover.propTypes = {
   measure: PropTypes.func.isRequired,
   selectionRef: PropTypes.shape({
-    current: PropTypes.instanceOf(Element ),
+    current: PropTypes.instanceOf(Element)
   }),
   children: PropTypes.node.isRequired,
   onTextSelect: PropTypes.func,
@@ -210,7 +218,7 @@ Popover.propTypes = {
   defaultDirection: PropTypes.string,
   contentRect: PropTypes.object.isRequired,
   gap: PropTypes.number,
-  isOpen: PropTypes.bool,
+  isOpen: PropTypes.bool
 };
 
 Popover.defaultProps = {

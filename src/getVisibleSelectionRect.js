@@ -9,9 +9,9 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  */
-import invariant from 'fbjs/lib/invariant';
+import invariant from "fbjs/lib/invariant";
 
-var isChrome = /chrome/gi.test(window.navigator.userAgent)
+var isChrome = /chrome/gi.test(window.navigator.userAgent);
 
 // In Chrome, the client rects will include the entire bounds of all nodes that
 // begin (have a start tag) within the selection, even if the selection does
@@ -47,7 +47,7 @@ function getRangeClientRectsChrome(range: Range): Array<ClientRect> {
 
   invariant(
     false,
-    'Found an unexpected detached subtree when getting range client rects.',
+    "Found an unexpected detached subtree when getting range client rects."
   );
 }
 
@@ -79,9 +79,9 @@ function getRangeBoundingClientRect(range) {
     // because Chrome renders a 0 width rectangle when the selection contains
     // a line break.
     if (rects.length > 1 && rects[0].width === 0) {
-      ({top, right, bottom, left} = rects[1]);
+      ({ top, right, bottom, left } = rects[1]);
     } else {
-      ({top, right, bottom, left} = rects[0]);
+      ({ top, right, bottom, left } = rects[0]);
     }
 
     for (var ii = 1; ii < rects.length; ii++) {
@@ -101,7 +101,7 @@ function getRangeBoundingClientRect(range) {
     bottom,
     left,
     width: right - left,
-    height: bottom - top,
+    height: bottom - top
   };
 }
 
@@ -118,7 +118,7 @@ function getVisibleSelectionRect(global: any): ?FakeClientRect {
 
   const range = selection.getRangeAt(0);
   const boundingRect = getRangeBoundingClientRect(range);
-  const {top, right, bottom, left} = boundingRect;
+  const { top, right, bottom, left } = boundingRect;
 
   // When a re-render leads to a node being removed, the DOM selection will
   // temporarily be placed on an ancestor node, which leads to an invalid
