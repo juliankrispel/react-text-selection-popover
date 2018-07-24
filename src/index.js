@@ -2,9 +2,9 @@ import React, { Fragment, Component } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import { withContentRect } from "react-measure";
-import debounce from "lodash/debounce";
+import debounce from "lodash.debounce";
 import windowDimensions from "react-window-dimensions";
-import getVisibleSelectionRect from "draft-js/lib/getVisibleSelectionRect";
+import getVisibleSelectionRect from "./getVisibleSelectionRect";
 import EventListener from "react-event-listener";
 
 const canBePlaced = (
@@ -145,6 +145,7 @@ class Popover extends Component {
       }
     } else if(this.state.isTextSelected) {
       onTextUnselect && onTextUnselect();
+      this.setState({ isTextSelected: false });
     }
   };
 
