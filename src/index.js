@@ -210,13 +210,13 @@ Popover.propTypes = {
   defaultDirection: PropTypes.string,
   contentRect: PropTypes.object.isRequired,
   gap: PropTypes.number,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
 };
 
 Popover.defaultProps = {
   gap: 5,
   isOpen: true,
-  defaultDirection: "below"
+  defaultDirection: "above"
 };
 
 export default wrapPortal(

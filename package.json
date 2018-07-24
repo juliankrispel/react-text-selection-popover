@@ -28,7 +28,6 @@
     ]
   },
   "dependencies": {
-    "draft-js": "^0.10.5",
     "lodash.debounce": "^4.0.8",
     "react-event-listener": "^0.6.1",
     "react-measure": "^2.0.2",

@@ -9,6 +9,16 @@ import pkg from './package.json'
 
 export default {
   input: 'src/index.js',
+  external: [
+    'react-measure',
+    'lodash.debounce',
+    'react',
+    'react-dom',
+    'prop-types',
+    'draft-js/lib/getVisibleSelectionRect',
+    'react-event-listener',
+    'react-window-dimensions',
+  ],
   output: [
     {
       file: pkg.main,
