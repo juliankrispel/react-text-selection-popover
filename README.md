@@ -51,7 +51,7 @@ class Example extends Component {
 
 | Property | Type | required? | Description |
 | - | - | - | - |
-| `selectionRef` | `React.ref` | optional | Set this to constrain selection events to a dom element and it's children. You need this especially if you use more than one Popover component __(defaults to `document`)__ |
+| `selectionRef` | `React.ref` | optional | Set this to constrain selection events to a dom element and its children. You need this especially if you use more than one Popover component __(defaults to `document`)__ |
 | `isOpen` | `Boolean` | optional | Is the Popover visible or not __(defaults to `true`)__ |
 | `onTextSelect` | `Function` | optional | Callback for when text is selected (typically used for setting state that opens the modal) |
 | `onTextUnSelect` | `Function` | optional | Callback for when selection collapses (typically used for setting state that closes the modal) |
