@@ -63,6 +63,10 @@ class Example extends Component {
 
 MIT © [juliankrispel](https://github.com/juliankrispel)
 
+## Wanna collaborate?
+
+Just ask me, I'll add you as collaborator! Any help I can get to make better software together I'll take it!
+
 ## Shoutouts
 
 This was originally written during some freelance work for [Spectrum](https://spectrum.chat/). Shoutout to their awesomeness for letting me do all my work for them in the open!
