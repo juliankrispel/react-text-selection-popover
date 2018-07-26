@@ -119,23 +119,6 @@ class Popover extends Component {
       this.setState({ isTextSelected: false, isOpen: true });
     }
   };
-  renderPopOver = style => {
-    const { children, isOpen, className, measureRef } = this.props;
-    const { position } = this.state;
-    let renderElement = null;
-    if (position !== null) {
-      let renderCondition =
-        typeof isOpen === "undefined" ? this.state.isOpen : isOpen;
-      renderElement = renderCondition ? (
-        <div key="popup" className={className} style={style} ref={measureRef}>
-          {children}
-        </div>
-      ) : (
-        renderElement
-      );
-    }
-    return renderElement;
-  };
   render() {
     const {
       selectionRef,
@@ -147,7 +130,7 @@ class Popover extends Component {
 
     const { position } = this.state;
     const isOpen =
-      typeof this.props.isOpen !== "undefined"
+      typeof this.props.isOpen === "boolean"
         ? this.props.isOpen
         : this.state.isOpen;
     let style = {};
