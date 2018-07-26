@@ -1,3 +1,6 @@
+## TO BE RELEASED
+- Refactored placement logic
+
 ## 0.2.1
 - Bugfix - account for both anchorNode and focusNode to be inside selectionRef
 
