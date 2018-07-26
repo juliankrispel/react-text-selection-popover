@@ -96,10 +96,8 @@ class Popover extends Component {
   updatePosition = () => {
     const browserSelection = document.getSelection();
     const { onTextSelect, onTextUnselect } = this.props;
-
     const selectionRef =
       this.props.selectionRef && this.props.selectionRef.current;
-
     const position = getVisibleSelectionRect(window);
 
     if (
@@ -141,15 +139,7 @@ class Popover extends Component {
     return renderElement;
   };
   render() {
-    const {
-      selectionRef,
-      measureRef,
-      isOpen,
-      children,
-      className,
-      ...props
-    } = this.props;
-
+    const { selectionRef, ...props } = this.props;
     const { position } = this.state;
 
     let style = {};
@@ -161,7 +151,6 @@ class Popover extends Component {
 
       style.pointerEvents = this.state.mousePressed === true ? "none" : "auto";
     }
-
     return [
       <EventListener
         key="update-position"
@@ -178,7 +167,7 @@ class Popover extends Component {
         target={(selectionRef && selectionRef.current) || document}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
-      this.renderPopOver()
+      this.renderPopOver(style)
     ];
   }
 }
