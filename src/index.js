@@ -9,19 +9,17 @@ import EventListener from "react-event-listener";
 
 const canBePlaced = (
   place,
-  { windowHeight, windowWidth, top, left, lineHeight, boxHeight, boxWidth },
+  { windowHeight, top, lineHeight, boxHeight },
   gap
 ) => {
   if (place === "below")
     return windowHeight >= top + gap + lineHeight + boxHeight;
   if (place === "above") return top - (boxHeight + gap) >= 0;
-  if (place === "right") return left + boxWidth <= windowWidth;
-  if (place === "left") return left - boxWidth >= 0;
 };
 
 const place = (
   place,
-  { windowHeight, windowWidth, top, left, lineHeight, boxHeight, boxWidth },
+  { windowHeight, windowWidth, top, left, lineHeight, boxWidth },
   gap
 ) => {
   const style = { position: "fixed" };
@@ -29,27 +27,9 @@ const place = (
   if (place === "below") {
     style.left = left - boxWidth / 2;
     style.top = top + gap + lineHeight;
-  } else if (place === "below-left") {
-    style.left = left;
-    style.top = top + gap + lineHeight;
-  } else if (place === "below-right") {
-    style.left = left;
-    style.top = top + gap + lineHeight;
-  } else if (place === "above-right") {
-    style.left = left;
-    style.bottom = windowHeight - top - gap;
-  } else if (place === "above-left") {
-    style.right = windowWidth - left;
-    style.bottom = windowHeight - top - gap;
   } else if (place === "above") {
     style.left = left - boxWidth / 2;
     style.bottom = windowHeight - top + gap;
-  } else if (place === "right") {
-    style.left = left;
-    style.top = top + lineHeight / 2 - boxHeight / 2;
-  } else if (place === "left") {
-    style.right = windowWidth - left;
-    style.top = top + lineHeight / 2 - boxHeight / 2;
   }
 
   // if we're on the right outer edge stay right
@@ -57,7 +37,7 @@ const place = (
     style.right = 0;
     delete style.left;
 
-    // if we're on the top stick to the top
+  // if we're on the top stick to the top
   } else if (style.top < 0) {
     style.top = 0;
   } else if (style.bottom > windowHeight) {
@@ -69,9 +49,6 @@ const place = (
 
   return style;
 };
-
-const verticalOrder = ["below", "above"];
-const horizontalOrder = ["right", "left"];
 
 const getStyle = ({
   gap,
@@ -85,6 +62,7 @@ const getStyle = ({
   const {
     bounds: { height: boxHeight, width: boxWidth }
   } = contentRect;
+
   const measureProps = {
     lineHeight,
     left,
@@ -97,21 +75,11 @@ const getStyle = ({
 
   measureProps.left = left + selectionWidth / 2;
 
-  const directionOrder = (defaultDirection === "left" ||
-  defaultDirection === "right"
-    ? horizontalOrder.concat(verticalOrder)
-    : verticalOrder.concat(horizontalOrder)
-  ).sort((dirA, dirB) => (dirB === defaultDirection ? 1 : 0));
+  const positions = defaultDirection === "above" ? ["above", "below"] : ["below", "above"];
 
-  const possiblePlaces = directionOrder.filter(dir =>
-    canBePlaced(dir, measureProps, gap)
-  );
+  const possiblePosition = positions.filter(dir => canBePlaced(dir, measureProps, gap))[0];
 
-  if (possiblePlaces.length > 0) {
-    return { ...style, ...place(possiblePlaces[0], measureProps, gap) };
-  } else {
-    return { ...style, ...place("below", measureProps, gap) };
-  }
+  return { ...style, ...place(possiblePosition, measureProps, gap) };
 };
 
 class Popover extends Component {
@@ -128,7 +96,10 @@ class Popover extends Component {
     const selectionRef =
       this.props.selectionRef && this.props.selectionRef.current;
 
+    const position = getVisibleSelectionRect(window);
+
     if (
+      position != null &&
       selectionRef != null &&
       browserSelection != null &&
       selectionRef.contains(browserSelection.anchorNode) === true &&
@@ -142,10 +113,7 @@ class Popover extends Component {
         this.setState({ isTextSelected: false });
       }
 
-      const position = getVisibleSelectionRect(window);
-      if (position != null) {
-        this.setState({ position });
-      }
+      this.setState({ position });
     } else if (this.state.isTextSelected) {
       onTextUnselect && onTextUnselect();
       this.setState({ isTextSelected: false });

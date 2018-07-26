@@ -37,7 +37,6 @@ class App extends Component {
         onTextSelect={() => this.setState({selection: 'paragraph'})}
         onTextUnselect={() => this.setState({selection: null})}
         selectionRef={this.refParagraph}
-        defaultDirection="above"
       >
         <Bar>
           <Button
@@ -66,7 +65,6 @@ class App extends Component {
         onTextSelect={() => this.setState({selection: 'code'})}
         onTextUnselect={() => this.setState({selection: null})}
         selectionRef={this.refCode}
-        defaultDirection="above"
       >
         <Bar bg="yellow">
           <p>And this code is all you really need! <strong>Simples!</strong></p>
