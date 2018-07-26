@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Fragment, Component } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
@@ -7,8 +9,10 @@ import windowDimensions from "react-window-dimensions";
 import getVisibleSelectionRect from "./getVisibleSelectionRect";
 import EventListener from "react-event-listener";
 
+type Place = "below" | "above"
+
 const canBePlaced = (
-  place,
+  place: Place,
   { windowHeight, top, lineHeight, boxHeight },
   gap
 ) => {
@@ -22,7 +26,20 @@ const place = (
   { windowHeight, windowWidth, top, left, lineHeight, boxWidth },
   gap
 ) => {
-  const style = { position: "fixed" };
+
+  const style: {
+    position: string,
+    left: ?number,
+    top: ?number,
+    right: ?number,
+    bottom: ?number,
+  } = {
+    position: "fixed",
+    left: null,
+    top: null,
+    right: null,
+    bottom: null,
+  };
 
   if (place === "below") {
     style.left = left - boxWidth / 2;
@@ -38,17 +55,18 @@ const place = (
     delete style.left;
 
   // if we're on the top stick to the top
-  } else if (style.top < 0) {
+  } else if (style.top != null && style.top < 0) {
     style.top = 0;
-  } else if (style.bottom > windowHeight) {
+  } else if (style.bottom != null && style.bottom > windowHeight) {
     style.bottom = 0;
     delete style.top;
-  } else if (style.left < 0) {
+  } else if (style.left != null && style.left < 0) {
     style.left = 0;
   }
 
   return style;
 };
+
 
 const getStyle = ({
   gap,
@@ -82,7 +100,23 @@ const getStyle = ({
   return { ...style, ...place(possiblePosition, measureProps, gap) };
 };
 
-class Popover extends Component {
+type Props = {
+  onTextSelect?: () => void,
+  onTextUnselect?: () => void,
+  selectionRef?: React$ElementRef<*>,
+  children: React$Node,
+  className?: string,
+  defaultDirection?: string,
+  gap?: number,
+  isOpen?: boolean
+};
+
+type State = {
+  isPressed: boolean,
+  position? 
+};
+
+class Popover extends Component<Props> {
   state = {
     isPressed: false,
     position: null,
