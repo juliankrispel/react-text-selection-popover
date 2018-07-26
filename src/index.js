@@ -37,7 +37,7 @@ const place = (
     style.right = 0;
     delete style.left;
 
-  // if we're on the top stick to the top
+    // if we're on the top stick to the top
   } else if (style.top < 0) {
     style.top = 0;
   } else if (style.bottom > windowHeight) {
@@ -75,9 +75,12 @@ const getStyle = ({
 
   measureProps.left = left + selectionWidth / 2;
 
-  const positions = defaultDirection === "above" ? ["above", "below"] : ["below", "above"];
+  const positions =
+    defaultDirection === "above" ? ["above", "below"] : ["below", "above"];
 
-  const possiblePosition = positions.filter(dir => canBePlaced(dir, measureProps, gap))[0];
+  const possiblePosition = positions.filter(dir =>
+    canBePlaced(dir, measureProps, gap)
+  )[0];
 
   return { ...style, ...place(possiblePosition, measureProps, gap) };
 };
@@ -86,7 +89,8 @@ class Popover extends Component {
   state = {
     isPressed: false,
     position: null,
-    isTextSelected: false
+    isTextSelected: false,
+    isOpen: false
   };
 
   updatePosition = () => {
@@ -107,19 +111,35 @@ class Popover extends Component {
     ) {
       if (browserSelection.isCollapsed === false) {
         onTextSelect && onTextSelect();
-        this.setState({ isTextSelected: true });
+        this.setState({ isTextSelected: true, isOpen: true });
       } else {
         onTextUnselect && onTextUnselect();
-        this.setState({ isTextSelected: false });
+        this.setState({ isTextSelected: false, isOpen: false });
       }
 
       this.setState({ position });
     } else if (this.state.isTextSelected) {
       onTextUnselect && onTextUnselect();
-      this.setState({ isTextSelected: false });
+      this.setState({ isTextSelected: false, isOpen: true });
     }
   };
-
+  renderPopOver = style => {
+    const { children, isOpen, className, measureRef } = this.props;
+    const { position } = this.state;
+    let renderElement = null;
+    if (position !== null) {
+      let renderCondition =
+        typeof isOpen === "undefined" ? this.state.isOpen : isOpen;
+      renderElement = renderCondition ? (
+        <div key="popup" className={className} style={style} ref={measureRef}>
+          {children}
+        </div>
+      ) : (
+        renderElement
+      );
+    }
+    return renderElement;
+  };
   render() {
     const {
       selectionRef,
@@ -158,11 +178,7 @@ class Popover extends Component {
         target={(selectionRef && selectionRef.current) || document}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
-      position == null || !isOpen ? null : (
-        <div key="popup" className={className} style={style} ref={measureRef}>
-          {children}
-        </div>
-      )
+      this.renderPopOver()
     ];
   }
 }
@@ -193,7 +209,6 @@ Popover.propTypes = {
 
 Popover.defaultProps = {
   gap: 5,
-  isOpen: true,
   defaultDirection: "above"
 };
 
