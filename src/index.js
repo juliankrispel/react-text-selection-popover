@@ -36,7 +36,6 @@ const place = (
   if (windowWidth <= style.left + boxWidth) {
     style.right = 0;
     delete style.left;
-
     // if we're on the top stick to the top
   } else if (style.top < 0) {
     style.top = 0;
@@ -99,7 +98,6 @@ class Popover extends Component {
     const selectionRef =
       this.props.selectionRef && this.props.selectionRef.current;
     const position = getVisibleSelectionRect(window);
-
     if (
       position != null &&
       selectionRef != null &&
@@ -139,9 +137,19 @@ class Popover extends Component {
     return renderElement;
   };
   render() {
-    const { selectionRef, ...props } = this.props;
-    const { position } = this.state;
+    const {
+      selectionRef,
+      measureRef,
+      children,
+      className,
+      ...props
+    } = this.props;
 
+    const { position } = this.state;
+    const isOpen =
+      typeof this.props.isOpen !== "undefined"
+        ? this.props.isOpen
+        : this.state.isOpen;
     let style = {};
     if (position !== null && props.contentRect.bounds.width != null) {
       style = getStyle({
@@ -167,11 +175,14 @@ class Popover extends Component {
         target={(selectionRef && selectionRef.current) || document}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
-      this.renderPopOver(style)
+      position == null || !isOpen ? null : (
+        <div key="popup" className={className} style={style} ref={measureRef}>
+          {children}
+        </div>
+      )
     ];
   }
 }
-
 const wrapPortal = Comp => ({ children, ...props }) =>
   createPortal(
     <Comp {...props}>
