@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Bar = styled.div`
   background: ${props => props.bg};
@@ -7,14 +7,14 @@ export const Bar = styled.div`
   transition: 300ms;
   display: flex;
   user-select: none;
-  p{
+  p {
     margin: 0;
     padding: 1em;
   }
 `;
 
 Bar.defaultProps = {
-  bg: '#fff'
+  bg: "#fff"
 };
 
 export const Button = styled.button`
@@ -27,7 +27,7 @@ export const Button = styled.button`
   font-weight: bold;
   transition: 300ms;
   transform: scale(1);
-  &:hover{
+  &:hover {
     transform: scale(1.15);
   }
   border: none;
@@ -50,12 +50,11 @@ export const Main = styled.main`
   align-items: center;
   color: #fff;
 
-pre {
-padding: 1em;
-line-height: 1.4em;
-font-size: .9em;
-color: #fff;
-background: #222;
-}
-
+  pre {
+    padding: 1em;
+    line-height: 1.4em;
+    font-size: 0.9em;
+    color: #fff;
+    background: #222;
+  }
 `;

@@ -5,11 +5,14 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "immutable": "^3.8.2",
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-scripts": "^1.1.1",
-    "react-text-selection-popover": "0.2.0",
+    "react-text-selection-popover": "^0.2.1",
+    "slate": "^0.34.7",
+    "slate-react": "^0.13.4",
     "styled-components": "^3.3.3"
   },
   "scripts": {
