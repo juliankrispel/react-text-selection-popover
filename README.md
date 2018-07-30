@@ -16,38 +16,49 @@ npm install --save react-text-selection-popover
 
 ## Usage
 
+The simplest way to use react-text-selection-popover is with 0 props just like this: `<Popover><MySweetComponent /></Popover>`
+
+This will display the popover when any text on the page is selected.
+
+### Restricting selection to a component
+
+By default, any text within `document` (or in other words - the entire page) will trigger the Popover. To restrict it you can define the `selectionRef` prop. Just pass a React ref to it:
+
 ```jsx
-import React, { Component } from 'react'
+constructor(props) {
+  super(props)
+  this.ref = React.createRef()
+}
 
-import Popover from 'react-text-selection-popover'
-
-class Example extends Component {
-  state = {
-    textSelected: false
-  }
-
-  constructor() {
-    this.ref = React.createRef()
-  }
-
-  render () {
-    return (
-      <div>
-        <p ref={this.ref}>
-          Select this text 
-        </p>
-<Popover
-  onTextSelect={()=> this.setState({ textSelected: true })}
-  onTextUnSelect={()=> this.setState({ textSelected: false })}
-  selectionRef={this.ref}
->
-  <MyAwesomeComponent />
-</Popover>
-</div>
-    )
-  }
+render() {
+  return <div>
+    <p ref={this.ref}>This text will trigger the popover</p>
+    <Popover selectionRef={this.ref}>Hello there</Popover>
+  </div>
 }
 ```
+
+### Managing Popover display
+
+By default, the popover automatically opens when text is selected and closes when text is unselected. However, on some occasions you might want to control this yourself.
+
+To control whether the Popover is shown or not all you need to define is the `isOpen` prop. `isOpen={true}` will show the popover, `isOpen={false}` will hide it.
+
+```jsx
+<Popover isOpen={this.state.isOpen}>Hey there</Popover>
+```
+
+You might still want to use selection events to control whether the Popover is shown or hidden. To do so - use the `onTextSelect` and `onTextUnSelect` prop.
+
+```jsx
+<Popover
+  isOpen={this.state.isOpen}
+  onTextSelect={() => this.setState({ isOpen: true })}
+  onTextUnselect={() => this.setState({ isOpen: false })}
+>Hey there</Popover>
+```
+
+For more info on how to use the `Popover` component, please see below :)
 
 ## `<Popover />` Props
 
@@ -58,7 +69,7 @@ class Example extends Component {
 | `onTextSelect` | `Function` | optional | Callback for when text is selected (typically used for setting state that opens the modal) |
 | `onTextUnSelect` | `Function` | optional | Callback for when selection collapses (typically used for setting state that closes the modal) |
 | `className` | `String` | optional | CSS class name for Popover container. |
-| `gap` | `Number` | optional | Px gap between text selection and popover - __(defaults to `5`)__ |
+| `gap` | `Number` | optional | Pixel gap between text selection and popover - __(defaults to `5`)__ |
 | `defaultDirection` | `"above"\|"below"` | optional | Whether to position the popover below or above selection by default - __(defaults to `"above"`) |
 
 ## License
