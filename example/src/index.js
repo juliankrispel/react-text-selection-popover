@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Main, Bar, Button } from "./ui";
 import Popover from "react-text-selection-popover";
-import SlateEditor from "./slate";
 
 class App extends Component {
   state = {
@@ -34,7 +33,6 @@ class App extends Component {
   <MakeItalic onPress={this.onMakeItalic}/>
 </Popover>`}
           </pre>
-				<SlateEditor />
         </div>
         <Popover
           isOpen={this.state.selection === "paragraph"}
@@ -56,9 +54,6 @@ class App extends Component {
         </Popover>
 
         <Popover
-          isOpen={this.state.selection === "code"}
-          onTextSelect={() => this.setState({ selection: "code" })}
-          onTextUnselect={() => this.setState({ selection: null })}
           selectionRef={this.refCode}
         >
           <Bar bg="yellow">

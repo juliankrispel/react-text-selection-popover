@@ -116,9 +116,10 @@ class Popover extends Component {
       this.setState({ position });
     } else if (this.state.isTextSelected) {
       onTextUnselect && onTextUnselect();
-      this.setState({ isTextSelected: false, isOpen: true });
+      this.setState({ isTextSelected: false, isOpen: false });
     }
   };
+
   render() {
     const {
       selectionRef,
@@ -133,6 +134,7 @@ class Popover extends Component {
       typeof this.props.isOpen === "boolean"
         ? this.props.isOpen
         : this.state.isOpen;
+
     let style = {};
     if (position !== null && props.contentRect.bounds.width != null) {
       style = getStyle({
