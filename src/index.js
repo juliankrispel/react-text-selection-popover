@@ -36,8 +36,7 @@ const place = (
   if (windowWidth <= style.left + boxWidth) {
     style.right = 0;
     delete style.left;
-
-  // if we're on the top stick to the top
+    // if we're on the top stick to the top
   } else if (style.top < 0) {
     style.top = 0;
   } else if (style.bottom > windowHeight) {
@@ -75,9 +74,12 @@ const getStyle = ({
 
   measureProps.left = left + selectionWidth / 2;
 
-  const positions = defaultDirection === "above" ? ["above", "below"] : ["below", "above"];
+  const positions =
+    defaultDirection === "above" ? ["above", "below"] : ["below", "above"];
 
-  const possiblePosition = positions.filter(dir => canBePlaced(dir, measureProps, gap))[0];
+  const possiblePosition = positions.filter(dir =>
+    canBePlaced(dir, measureProps, gap)
+  )[0];
 
   return { ...style, ...place(possiblePosition, measureProps, gap) };
 };
@@ -86,18 +88,16 @@ class Popover extends Component {
   state = {
     isPressed: false,
     position: null,
-    isTextSelected: false
+    isTextSelected: false,
+    isOpen: false
   };
 
   updatePosition = () => {
     const browserSelection = document.getSelection();
     const { onTextSelect, onTextUnselect } = this.props;
-
     const selectionRef =
       this.props.selectionRef && this.props.selectionRef.current;
-
     const position = getVisibleSelectionRect(window);
-
     if (
       position != null &&
       selectionRef != null &&
@@ -107,31 +107,32 @@ class Popover extends Component {
     ) {
       if (browserSelection.isCollapsed === false) {
         onTextSelect && onTextSelect();
-        this.setState({ isTextSelected: true });
+        this.setState({ isTextSelected: true, isOpen: true });
       } else {
         onTextUnselect && onTextUnselect();
-        this.setState({ isTextSelected: false });
+        this.setState({ isTextSelected: false, isOpen: false });
       }
 
       this.setState({ position });
     } else if (this.state.isTextSelected) {
       onTextUnselect && onTextUnselect();
-      this.setState({ isTextSelected: false });
+      this.setState({ isTextSelected: false, isOpen: true });
     }
   };
-
   render() {
     const {
       selectionRef,
       measureRef,
-      isOpen,
       children,
       className,
       ...props
     } = this.props;
 
     const { position } = this.state;
-
+    const isOpen =
+      typeof this.props.isOpen === "boolean"
+        ? this.props.isOpen
+        : this.state.isOpen;
     let style = {};
     if (position !== null && props.contentRect.bounds.width != null) {
       style = getStyle({
@@ -141,7 +142,6 @@ class Popover extends Component {
 
       style.pointerEvents = this.state.mousePressed === true ? "none" : "auto";
     }
-
     return [
       <EventListener
         key="update-position"
@@ -166,7 +166,6 @@ class Popover extends Component {
     ];
   }
 }
-
 const wrapPortal = Comp => ({ children, ...props }) =>
   createPortal(
     <Comp {...props}>
@@ -193,7 +192,6 @@ Popover.propTypes = {
 
 Popover.defaultProps = {
   gap: 5,
-  isOpen: true,
   defaultDirection: "above"
 };
 
