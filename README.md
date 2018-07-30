@@ -4,6 +4,8 @@
 
 As it says on the tin. This module provides a way to render a popover/tooltip style component when text is selected.
 
+> You'll need React.16.3 or higher to use this btw. If you strongly disagree please open [an issue](issues/new)
+
 [![NPM](https://img.shields.io/npm/v/react-text-selection-popover.svg)](https://www.npmjs.com/package/react-text-selection-popover) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install

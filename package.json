@@ -15,7 +15,7 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "precommit": "lint-staged && yarn run lint && yarn run flow && yarn run test",
-    "prettier": "prettier src/**/*.js --write",
+    "prettier": "prettier src/**/*.js example/src/**/*.js --write",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
