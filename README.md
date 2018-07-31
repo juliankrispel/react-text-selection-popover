@@ -16,7 +16,10 @@ npm install --save react-text-selection-popover
 
 ## Usage
 
-The simplest way to use react-text-selection-popover is with 0 props just like this: `<Popover><MySweetComponent /></Popover>`
+The simplest way to use react-text-selection-popover is with 0 props just like this:
+```jsx
+<Popover><MySweetComponent /></Popover>
+```
 
 This will display the popover when any text on the page is selected.
 
