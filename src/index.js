@@ -152,12 +152,12 @@ class Popover extends Component {
       />,
       <EventListener
         key="on-mouse-up"
-        target={(selectionRef && selectionRef.current) || document}
+        target={(selectionRef && selectionRef.current)}
         onMouseUp={() => this.setState({ mousePressed: false })}
       />,
       <EventListener
         key="on-mouse-down"
-        target={(selectionRef && selectionRef.current) || document}
+        target={(selectionRef && selectionRef.current)}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
       position == null || !isOpen ? null : (
@@ -168,6 +168,7 @@ class Popover extends Component {
     ];
   }
 }
+
 const wrapPortal = Comp => ({ children, ...props }) =>
   createPortal(
     <Comp {...props}>
@@ -193,6 +194,7 @@ Popover.propTypes = {
 };
 
 Popover.defaultProps = {
+  selectionRef: { current: document },
   gap: 5,
   defaultDirection: "above"
 };

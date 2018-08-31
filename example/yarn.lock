@@ -5708,9 +5708,9 @@ react-scripts@^1.1.1:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react-text-selection-popover@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/react-text-selection-popover/-/react-text-selection-popover-0.2.1.tgz#899249b5b5a3b41f329999f0844771b55fb58b85"
+react-text-selection-popover@latest:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-text-selection-popover/-/react-text-selection-popover-0.3.0.tgz#364e83324788c68a34893b6cf9b3f0832350d5c5"
   dependencies:
     lodash.debounce "^4.0.8"
     react-event-listener "^0.6.1"
