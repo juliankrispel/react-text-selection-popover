@@ -10,7 +10,7 @@
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-scripts": "^1.1.1",
-    "react-text-selection-popover": "latest",
+    "react-text-selection-popover": "^1.0.0",
     "slate": "^0.34.7",
     "slate-react": "^0.13.4",
     "styled-components": "^3.3.3"
