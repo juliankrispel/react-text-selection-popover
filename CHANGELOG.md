@@ -1,3 +1,6 @@
+## 1.0.1
+- Fix packkage.json to include lib
+
 ## 1.0.0
 - Move placement strategy into default prop - this makes placement completely configurable
 - Deprecate direction prop
