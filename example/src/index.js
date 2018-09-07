@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { Main, Bar, Button } from "./ui";
 import Popover from "react-text-selection-popover";
 import placeRightBelow from "react-text-selection-popover/lib/placeRightBelow";
+import Draggable from "react-draggable";
 
 class App extends Component {
   state = {
@@ -16,53 +17,37 @@ class App extends Component {
     this.refCode = React.createRef();
   }
 
+  onChangeText = (e) => {
+    console.log(e.target);
+  }
+
   render() {
     return (
       <Main>
-        <div>
-          <p ref={this.refParagraph}>
-            Selecting this text triggers the popover!
-          </p>
-          <pre ref={this.refCode}>
-            {`<Popover
-  isOpen={this.state.isOpen}
-  onTextSelect={() => this.setState({isOpen: true})}
-  onTextUnselect={() => this.setState({isOpen: false})}
-  selectionRef={this.ref}
-  defaultDirection="above"
->
-  <MakeItalic onPress={this.onMakeItalic}/>
-</Popover>`}
-          </pre>
-        </div>
-        <Popover
-          isOpen={this.state.selection === "paragraph"}
-          onTextSelect={() => this.setState({ selection: "paragraph" })}
-          onTextUnselect={() => this.setState({ selection: null })}
-          selectionRef={this.refParagraph}
+        <Draggable
+          handle=".handle"
+          defaultPosition={{x: 0, y: 0}}
+          position={null}
         >
-          <Bar>
-            <Button bg="#5595ff" onClick={() => alert("Boing")}>
-              Click me
-            </Button>
-            <Button bg="#e257b5" onClick={() => alert("Bang")}>
-              Or me
-            </Button>
-            <Button bg="#ffa935" onClick={() => alert("Boom")}>
-              Or me
-            </Button>
-          </Bar>
-        </Popover>
-        <Popover
-          selectionRef={this.refCode}
-          placementStrategy={placeRightBelow}
-        >
-          <Bar bg="yellow">
-            <p>
-              And this code is all you really need! <strong>Simples!</strong>
-            </p>
-          </Bar>
-        </Popover>
+          <div>
+            <button className="handle">drag</button>
+            <div
+              ref={this.refParagraph}
+              contentEditable
+              suppressContentEditableWarning
+              onInput={this.onChangeText}
+            >
+              Selecting this text triggers the popover!
+            </div>
+            <Popover selectionRef={this.refParagraph}>
+              <Bar bg="yellow">
+                <p>
+                  And this code is all you really need! <strong>Simples!</strong>
+                </p>
+              </Bar>
+            </Popover>
+          </div>
+        </Draggable>
       </Main>
     );
   }
