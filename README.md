@@ -43,9 +43,9 @@ render() {
 
 ### Positioning the Popover
 
-Since `1.0` the positioning of the Popover is completely configurable via the `placementStrategy` prop. By default, the popover gets centered above or below the text selection (useful for inline toolbars in text editors like Medium).
+Since `1.0`, positioning is completely configurable via the `placementStrategy` prop. By default, the popover gets centered above or below the text selection (useful for inline toolbars in text editors like Medium) but you're not tied in to this behaviour.
 
-Alternative strategies are in the [`lib`](lib) folder of the package. If you have a strategy that you find useful, please open a pr and add it to this folder, or open an issue :), I'd be more than happy to help you get it merged and documented!
+Alternative strategies are in the [`lib`](lib) folder of the package.
 
 Here's how you use a placement strategy from the lib folder:
 
@@ -65,6 +65,8 @@ import placeRightBelow from 'react-text-selection-popover/lib/placeRightBelow'
 You can also write your very own placement strategy. A placement strategy takes as an argument an object containg all the properties you need to compute the position of the popover and returns a style object as a result. [See below for the exact shape of the Object](#popover--props)
 
 If you'd like to look at an example, just have a look at [the default positioning strategy](src/centerAboveOrBelow.js)
+
+__Btw__: If you have written a placement strategy that you want to share because you think it might be useful to others :), please open a pr and add it to the `lib` folder. I'd be more than happy to review it and help get it merged if there's a significant usecase.
 
 ### Managing Popover display
 
