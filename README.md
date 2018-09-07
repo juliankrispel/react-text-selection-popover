@@ -41,6 +41,31 @@ render() {
 }
 ```
 
+### Positioning the Popover
+
+Since `1.0` the positioning of the Popover is completely configurable via the `placementStrategy` prop. By default, the popover gets centered above or below the text selection (useful for inline toolbars in text editors like Medium).
+
+Alternative strategies are in the [`lib`](lib) folder of the package. If you have a strategy that you find useful, please open a pr and add it to this folder, or open an issue :), I'd be more than happy to help you get it merged and documented!
+
+Here's how you use a placement strategy from the lib folder:
+
+```js
+import Popover from 'react-text-selection-popover';
+import placeRightBelow from 'react-text-selection-popover/lib/placeRightBelow'
+
+<Popover
+  placementStrategy={placeRightBelow}
+>
+  <!-- my awesome popover content here -->
+</Popover
+```
+
+#### Writing your own placement strategy
+
+You can also write your very own placement strategy. A placement strategy takes as an argument an object containg all the properties you need to compute the position of the popover and returns a style object as a result. [See below for the exact shape of the Object](#popover--props)
+
+If you'd like to look at an example, just have a look at [the default positioning strategy](src/centerAboveOrBelow.js)
+
 ### Managing Popover display
 
 By default, the popover automatically opens when text is selected and closes when text is unselected. However, on some occasions you might want to control this yourself.
@@ -73,7 +98,7 @@ For more info on how to use the `Popover` component, please see below :)
 | `onTextUnSelect` | `Function` | optional | Callback for when selection collapses (typically used for setting state that closes the modal) |
 | `className` | `String` | optional | CSS class name for Popover container. |
 | `gap` | `Number` | optional | Pixel gap between text selection and popover - __(defaults to `5`)__ |
-| `defaultDirection` | `"above"\|"below"` | optional | Whether to position the popover below or above selection by default - __(defaults to `"above"`) |
+| `placementStrategy` | `({ gap, windowWidth, windowHeight, topOffset, leftOffset, lineHeight, boxWidth, boxHeight }) => StyleObject` | optional | A method that produces a style object to position the popover |
 
 ## License
 

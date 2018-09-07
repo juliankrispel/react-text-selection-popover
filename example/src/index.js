@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Main, Bar, Button } from "./ui";
 import Popover from "react-text-selection-popover";
+import placeRightBelow from "react-text-selection-popover/lib/placeRightBelow";
 
 class App extends Component {
   state = {
@@ -52,9 +53,9 @@ class App extends Component {
             </Button>
           </Bar>
         </Popover>
-
         <Popover
           selectionRef={this.refCode}
+          placementStrategy={placeRightBelow}
         >
           <Bar bg="yellow">
             <p>
