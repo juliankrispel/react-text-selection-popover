@@ -115,7 +115,7 @@ class Popover extends Component {
         target={selectionRef.current}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
-      selectionPosition == null || !isOpen || selectionPosition.width == 0 ? null : (
+      selectionPosition == null || !isOpen || contentRect.bounds.width == 0 ? null : (
         <div key="popup" className={className} style={style} ref={measureRef}>
           {children}
         </div>

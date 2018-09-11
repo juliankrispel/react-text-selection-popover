@@ -1,3 +1,6 @@
+## 1.0.2
+- Popover opens even when selectionWidth is 0
+
 ## 1.0.1
 - Fix packkage.json to include lib
 
