@@ -113,3 +113,11 @@ Just ask me, I'll add you as collaborator! Any help I can get to make better sof
 ## Shoutouts
 
 This was originally written during some freelance work for [Spectrum](https://spectrum.chat/). Shoutout to their awesomeness for letting me do all my work for them in the open!
+
+## TODO:
+write test for all states:
+- Test pointerEvents are correct
+- Test isOpen overrides anything internal
+- Test placement strategies
+- Test refs
+- Test events being only inside selection ref

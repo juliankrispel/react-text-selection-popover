@@ -105,14 +105,14 @@ class Popover extends Component {
         target={document}
         onSelectionChange={this.updatePosition}
       />,
-      selectionRef && selectionRef.current && <EventListener
+      <EventListener
         key="on-mouse-up"
-        target={selectionRef.current}
+        target={selectionRef && selectionRef.current ? selectionRef.current : document}
         onMouseUp={() => this.setState({ mousePressed: false })}
       />,
-      selectionRef && selectionRef.current && <EventListener
+      <EventListener
         key="on-mouse-down"
-        target={selectionRef.current}
+        target={selectionRef && selectionRef.current ? selectionRef.current : document}
         onMouseDown={() => this.setState({ mousePressed: true })}
       />,
       selectionPosition == null || !isOpen || contentRect.bounds.width == 0 ? null : (
