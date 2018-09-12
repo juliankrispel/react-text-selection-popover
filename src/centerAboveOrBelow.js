@@ -20,7 +20,7 @@ export default ({
   selectionTop,
   selectionLeft,
   selectionWidth,
-  /* selectionHeight */
+  selectionHeight
 }) => {
   const style = { position: "fixed" };
 
@@ -39,7 +39,7 @@ export default ({
 
   // if the popover is placed above the frame, position below selection instead
   if (style.top < frameTop) {
-    style.top = selectionTop + gap;
+    style.top = selectionTop + selectionHeight + gap;
   }
 
   return style;

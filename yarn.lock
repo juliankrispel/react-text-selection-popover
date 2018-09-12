@@ -6119,9 +6119,9 @@ react-event-listener@^0.6.1:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-measure@juliankrispel/react-measure#proptype-release:
-  version "2.1.0"
-  resolved "https://codeload.github.com/juliankrispel/react-measure/tar.gz/410e7d63a9612f54c4f0d2075d28b35f2a25d136"
+react-measure@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-measure/-/react-measure-2.1.2.tgz#2fa690cc657d1e7a1271902b7a5937e0055338d5"
   dependencies:
     get-node-dimensions "^1.2.0"
     prop-types "^15.5.10"
