@@ -9,7 +9,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  */
-import invariant from "fbjs/lib/invariant";
+import invariant from "invariant";
 
 var isChrome = /chrome/gi.test(window.navigator.userAgent);
 

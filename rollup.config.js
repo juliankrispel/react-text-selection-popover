@@ -4,15 +4,17 @@ import external from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
+import globby from 'globby'
 
 import pkg from "./package.json";
 
-export default {
+const defaultConf = {
   input: 'src/index.js',
   external: [
     'react-measure',
     'lodash.debounce',
     'react',
+    'invariant',
     'react-dom',
     'prop-types',
     'draft-js/lib/getVisibleSelectionRect',
@@ -41,4 +43,19 @@ export default {
     resolve(),
     commonjs()
   ]
-};
+}
+
+export default [
+  defaultConf,
+  ...globby.sync('./src/lib/*.js')
+  .map(filePath => ({
+    ...defaultConf,
+    input: filePath,
+    output: [
+      {
+        file: filePath.replace('src\/', ''),
+        format: 'cjs'
+      }
+    ],
+  }))
+];

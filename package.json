@@ -1,7 +1,7 @@
 {
   "name": "react-text-selection-popover",
-  "version": "1.1.0",
-  "description": "",
+  "version": "1.1.1",
+  "description": "A popover component positioned according to the current selection in a contenteditable element",
   "author": "juliankrispel",
   "license": "MIT",
   "repository": "juliankrispel/react-text-selection-popover",
@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "invariant": "^2.2.4",
     "lodash.debounce": "^4.0.8",
     "react-event-listener": "^0.6.1",
     "react-measure": "^2.1.2",
@@ -59,6 +60,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "flow-bin": "^0.76.0",
     "gh-pages": "^1.1.0",
+    "globby": "^8.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1",
