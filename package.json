@@ -1,6 +1,6 @@
 {
   "name": "react-text-selection-popover",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A popover component positioned according to the current selection in a contenteditable element",
   "author": "juliankrispel",
   "license": "MIT",

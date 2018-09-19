@@ -11,6 +11,7 @@ import centerAboveOrBelow from "./centerAboveOrBelow";
 class Popover extends Component {
   static defaultProps = {
     selectionRef: { current: document.body },
+    scrollRef: { current: window },
     placementStrategy: centerAboveOrBelow,
     gap: 5,
   };
@@ -56,6 +57,7 @@ class Popover extends Component {
       selectionRef,
       measureRef,
       gap,
+      scrollRef,
       placementStrategy,
       contentRect,
       windowHeight,
@@ -106,8 +108,18 @@ class Popover extends Component {
         onSelectionChange={this.updatePosition}
       />,
       <EventListener
+        key="on-resize-window"
+        target={window}
+        onResize={this.updatePosition}
+      />,
+      <EventListener
+        key="on-scroll"
+        target={scrollRef && scrollRef.current ? scrollRef.current : window}
+        onScroll={this.updatePosition}
+      />,
+      <EventListener
         key="on-mouse-up"
-        target={selectionRef && selectionRef.current ? selectionRef.current : document}
+        target={selectionRef && selectionRef.current ? selectionRef.current : document.body}
         onMouseUp={() => this.setState({ mousePressed: false })}
       />,
       <EventListener
@@ -136,6 +148,12 @@ Popover.propTypes = {
   measure: PropTypes.func.isRequired,
   selectionRef: PropTypes.shape({
     current: PropTypes.instanceOf(Element)
+  }),
+  scrollRef: PropTypes.shape({
+    current: PropTypes.oneOfType([
+      PropTypes.instanceOf(Element),
+      PropTypes.instanceOf(window.constructor)
+    ])
   }),
   children: PropTypes.node.isRequired,
   onTextSelect: PropTypes.func,

@@ -88,6 +88,26 @@ You might still want to use selection events to control whether the Popover is s
 >Hey there</Popover>
 ```
 
+### Using Popover inside a scrollable element
+
+Some applications have scrollable elements inside them other than `<body>`. By default Popover repositions itself when the viewport scrolls (`window` that is). If you're using the `Popover` inside a scrollable element you need to define the `scrollRef` prop like so:
+
+```
+class MyApp extends Component {
+  constructor() {
+    this.scrollRef = React.createRef()
+  }
+
+  render() {
+    return <div>
+      <main ref={this.scrollRef}>
+      </main>
+      <Popover scrollRef={this.scrollRef}>My popover</Popover>
+    </div>
+  }
+}
+```
+
 For more info on how to use the `Popover` component, please see below :)
 
 ## `<Popover />` Props
@@ -95,6 +115,7 @@ For more info on how to use the `Popover` component, please see below :)
 | Property | Type | required? | Description |
 | - | - | - | - |
 | `selectionRef` | `React.ref` | optional | Set this to constrain selection events to a dom element and its children. You need this especially if you use more than one Popover component __(defaults to `document`)__ |
+| `scrollRef` | `React.ref` | optional | By default Popover repositions itself when there's a scroll event for document.body. Set this to reposition the Popover upon scrolling of a given element |
 | `isOpen` | `Boolean` | optional | Is the Popover visible or not __(defaults to `true`)__ |
 | `onTextSelect` | `Function` | optional | Callback for when text is selected (typically used for setting state that opens the modal) |
 | `onTextUnSelect` | `Function` | optional | Callback for when selection collapses (typically used for setting state that closes the modal) |
@@ -120,4 +141,6 @@ write test for all states:
 - Test isOpen overrides anything internal
 - Test placement strategies
 - Test refs
+- Test scroll events
+- Test resize events
 - Test events being only inside selection ref

@@ -1,3 +1,7 @@
+## 1.2.0
+- Reposition Popover for resize and scroll events on viewport
+- Add scrollRef prop to give control to user for which scroll events to listen to
+
 ## 1.0.2
 - Popover opens even when selectionWidth is 0
 
