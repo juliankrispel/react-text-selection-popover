@@ -4,13 +4,16 @@ import external from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
-import globby from 'globby'
+import globby from "globby";
 
 import pkg from "./package.json";
 
 const defaultConf = {
   input: 'src/index.js',
   external: [
+    'resize-observer-polyfill',
+    'get-node-dimensions',
+    'react-measure/lib/with-content-rect',
     'react-measure',
     'lodash.debounce',
     'react',
@@ -43,7 +46,7 @@ const defaultConf = {
     resolve(),
     commonjs()
   ]
-}
+};
 
 export default [
   defaultConf,
