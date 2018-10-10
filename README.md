@@ -2,7 +2,7 @@
 
 ![lil-demo](demo.gif)
 
-As it says on the tin. This module provides a way to render a popover/tooltip style component when text is selected.
+This module provides a way to render a popover/tooltip style component when text (inside a `contenteditable` element) is selected.
 
 > You'll need React.16.3 or higher to use this btw. If you strongly disagree please open [an issue](issues/new)
 
