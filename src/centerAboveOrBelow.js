@@ -31,10 +31,10 @@ export default ({
   // with left edge
   if (style.left < frameLeft) {
     style.left = frameLeft;
-  // if the 
-  } else if (style.right > frameWidth) {
-    delete style.left;
-    style.right = frameLeft + frameWidth;
+  // if the popover is placed beyond the right edge align with the
+  // right edge of the sceen
+  } else if (style.left + boxWidth > frameWidth) {
+    style.left = frameWidth - boxWidth;
   }
 
   // if the popover is placed above the frame, position below selection instead

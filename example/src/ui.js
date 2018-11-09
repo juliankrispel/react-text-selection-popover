@@ -5,6 +5,7 @@ export const Bar = styled.div`
   border-radius: 3px;
   overflow: hidden;
   transition: 300ms;
+  white-space: nowrap;
   display: flex;
   user-select: none;
   p {
