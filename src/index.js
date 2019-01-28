@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import withContentRect from "react-measure/lib/with-content-rect";
+import { withContentRect } from "react-measure";
 import debounce from "lodash.debounce";
 import windowDimensions from "react-window-dimensions";
 import getVisibleSelectionRect from "./getVisibleSelectionRect";
