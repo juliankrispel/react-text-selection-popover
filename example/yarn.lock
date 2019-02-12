@@ -3421,7 +3421,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.2.2:
+invariant@2.2.4, invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -4300,7 +4300,7 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
-lodash.debounce@^4.0.8:
+lodash.debounce@4.0.8, lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
@@ -5648,9 +5648,10 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
-react-event-listener@^0.6.1:
+react-event-listener@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.1.tgz#41c7a80a66b398c27dd511e22712b02f3d4eccca"
+  integrity sha1-QceoCmazmMJ91RHiJxKwLz1OzMo=
   dependencies:
     "@babel/runtime" "^7.0.0-beta.42"
     prop-types "^15.6.0"
@@ -5664,9 +5665,10 @@ react-is@^16.3.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.1.tgz#d624c4650d2c65dbd52c72622bbf389435d9776e"
 
-react-measure@juliankrispel/react-measure#proptype-release:
-  version "2.1.0"
-  resolved "https://codeload.github.com/juliankrispel/react-measure/tar.gz/410e7d63a9612f54c4f0d2075d28b35f2a25d136"
+react-measure@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-measure/-/react-measure-2.1.2.tgz#2fa690cc657d1e7a1271902b7a5937e0055338d5"
+  integrity sha512-2xgrlj77Pv8MIYhm+S5s4Q+QnsYFT3CXzoUkx2mWZBIWzQnT7ubMtmsVtCoNdYV5PGKjTlwo9iGAtS3SrTG/Gg==
   dependencies:
     get-node-dimensions "^1.2.0"
     prop-types "^15.5.10"
@@ -5723,19 +5725,14 @@ react-scripts@^1.1.1:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react-text-selection-popover@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-text-selection-popover/-/react-text-selection-popover-1.0.1.tgz#369a710d3ff7bd0c5739217033e45919a558cecd"
-  dependencies:
-    lodash.debounce "^4.0.8"
-    react-event-listener "^0.6.1"
-    react-measure juliankrispel/react-measure#proptype-release
-    react-window-dimensions "^1.0.2"
-    rollup-plugin-copy "^0.2.3"
+"react-text-selection-popover@link:..":
+  version "0.0.0"
+  uid ""
 
-react-window-dimensions@^1.0.2:
+react-window-dimensions@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-window-dimensions/-/react-window-dimensions-1.0.2.tgz#94f9cd24e96152b4c706fc0590e87a0ece27d2a3"
+  integrity sha512-G1q7VE+gncnNPyEwiLAbPk/vx7iEsarkd6kEUtTCIxImY1ZStj9BXuaR3dbWP/+gBvRgBn/jE8ZtnxZoVZXKNg==
 
 react@^16.3.0:
   version "16.4.1"
@@ -6060,9 +6057,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-copy@^0.2.3:
+rollup-plugin-copy@0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/rollup-plugin-copy/-/rollup-plugin-copy-0.2.3.tgz#dac1ab81d1f220baeb98e5c4c0108252e1edbb98"
+  integrity sha1-2sGrgdHyILrrmOXEwBCCUuHtu5g=
   dependencies:
     colors "^1.1.2"
     fs-extra "^3.0.0"

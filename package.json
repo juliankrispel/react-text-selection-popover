@@ -28,20 +28,20 @@
     ]
   },
   "dependencies": {
-    "invariant": "^2.2.4",
-    "lodash.debounce": "^4.0.8",
-    "react-event-listener": "^0.6.1",
-    "react-measure": "^2.1.2",
-    "react-window-dimensions": "^1.0.2",
-    "rollup-plugin-copy": "^0.2.3"
+    "invariant": "2.2.4",
+    "lodash.debounce": "4.0.8",
+    "react-event-listener": "0.6.1",
+    "react-measure": "2.1.2",
+    "react-window-dimensions": "1.0.2"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
     "react": "^16.3.0",
     "react-dom": "16.3.0"
   },
   "devDependencies": {
+    "prop-types": "^15.5.4",
     "babel-core": "^6.26.0",
+    "rollup-plugin-copy": "0.2.3",
     "babel-eslint": "^8.2.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.0",

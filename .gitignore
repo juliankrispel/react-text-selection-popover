@@ -6,7 +6,7 @@ node_modules
 
 # builds
 build
-./lib
+lib
 dist
 
 # misc
