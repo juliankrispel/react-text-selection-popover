@@ -1,9 +1,8 @@
 import "./index.css";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Main, Bar, Button } from "./ui";
+import { Main, Bar } from "./ui";
 import Popover from "react-text-selection-popover";
-import placeRightBelow from "react-text-selection-popover/lib/placeRightBelow";
 import Draggable from "react-draggable";
 
 class App extends Component {
@@ -19,7 +18,7 @@ class App extends Component {
 
   onChangeText = (e) => {
     console.log(e.target);
-  }
+  };
 
   render() {
     return (
