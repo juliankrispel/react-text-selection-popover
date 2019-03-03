@@ -122,6 +122,7 @@ For more info on how to use the `Popover` component, please see below :)
 | `className` | `String` | optional | CSS class name for Popover container. |
 | `gap` | `Number` | optional | Pixel gap between text selection and popover - __(defaults to `5`)__ |
 | `placementStrategy` | `({ gap, windowWidth, windowHeight, topOffset, leftOffset, lineHeight, boxWidth, boxHeight }) => StyleObject` | optional | A method that produces a style object to position the popover |
+| `zIndex` | `Number` | optional | Z-index offset of popover - __(defaults to `1`)__  |
 
 ## License
 

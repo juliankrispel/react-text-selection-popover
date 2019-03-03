@@ -13,6 +13,7 @@ class Popover extends Component {
     selectionRef: { current: document.body },
     scrollRef: { current: window },
     placementStrategy: centerAboveOrBelow,
+    zIndex: 1,
     gap: 5,
   };
 
@@ -59,6 +60,7 @@ class Popover extends Component {
       gap,
       scrollRef,
       placementStrategy,
+      zIndex,
       contentRect,
       windowHeight,
       windowWidth,
@@ -81,6 +83,7 @@ class Popover extends Component {
        */
       style = placementStrategy({
         gap,
+        zIndex,
         frameWidth: windowWidth,
         frameHeight: windowHeight,
         frameLeft: 0,
@@ -162,6 +165,7 @@ Popover.propTypes = {
   windowHeight: PropTypes.number,
   className: PropTypes.string,
   placementStrategy: PropTypes.func,
+  zIndex: PropTypes.number,
   measureRef: PropTypes.func.isRequired,
   contentRect: PropTypes.object.isRequired,
   gap: PropTypes.number,

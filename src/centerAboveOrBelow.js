@@ -3,6 +3,9 @@ export default ({
   // comes from `props.gap`
   gap,
 
+  // z-index for popover
+  zIndex,
+
   // by default frame === window but this might
   // change in future. For example if we'd like to restrict
   // placement to a container other than window
@@ -22,7 +25,7 @@ export default ({
   selectionWidth,
   selectionHeight
 }) => {
-  const style = { position: "fixed" };
+  const style = { position: "fixed", zIndex };
 
   style.left = selectionLeft + (selectionWidth / 2) - (boxWidth / 2);
   style.top = selectionTop - boxHeight - gap;
