@@ -1,6 +1,6 @@
 {
   "name": "react-text-selection-popover",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A popover component positioned according to the current selection in a contenteditable element",
   "author": "juliankrispel",
   "license": "MIT",
@@ -30,7 +30,7 @@
   "dependencies": {
     "invariant": "2.2.4",
     "lodash.debounce": "4.0.8",
-    "react-event-listener": "0.6.1",
+    "react-event-listener": "^0.6.6",
     "react-measure": "2.1.2",
     "react-window-dimensions": "1.0.2"
   },
@@ -39,9 +39,7 @@
     "react-dom": "16.3.0"
   },
   "devDependencies": {
-    "prop-types": "^15.5.4",
     "babel-core": "^6.26.0",
-    "rollup-plugin-copy": "0.2.3",
     "babel-eslint": "^8.2.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.0",
@@ -61,12 +59,14 @@
     "flow-bin": "^0.76.0",
     "gh-pages": "^1.1.0",
     "globby": "^8.0.1",
+    "prop-types": "^15.5.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^1.1.1",
     "rollup": "^0.54.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-copy": "0.2.3",
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-peer-deps-external": "^2.0.0",
     "rollup-plugin-postcss": "^1.1.0",
