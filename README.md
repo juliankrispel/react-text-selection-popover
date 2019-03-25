@@ -114,6 +114,7 @@ For more info on how to use the `Popover` component, please see below :)
 
 | Property | Type | required? | Description |
 | - | - | - | - |
+| `appendTarget` | `React.ref` | optional | DOM element where popover will be mounted __(defaults to `document.body`)__ |
 | `selectionRef` | `React.ref` | optional | Set this to constrain selection events to a dom element and its children. You need this especially if you use more than one Popover component __(defaults to `document`)__ |
 | `scrollRef` | `React.ref` | optional | By default Popover repositions itself when there's a scroll event for document.body. Set this to reposition the Popover upon scrolling of a given element |
 | `isOpen` | `Boolean` | optional | Is the Popover visible or not __(defaults to `true`)__ |
