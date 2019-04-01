@@ -1,5 +1,8 @@
 ## 1.3.0
-- Allow specifying DOM node to mount a popover (via `appendTarget` prop)
+- Allow specifying DOM node to mount a popover (via `containerNode` prop)
+
+## 1.2.5
+- Made react-dom version dependency less granular
 
 ## 1.2.0
 - Reposition Popover for resize and scroll events on viewport

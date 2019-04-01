@@ -141,11 +141,11 @@ const wrapPortal = Comp => ({ children, ...props }) =>
     <Comp {...props}>
       <Fragment>{children}</Fragment>
     </Comp>,
-    props.appendTarget || document.body
+    props.containerNode || document.body
   );
 
 Popover.propTypes = {
-  appendTarget: PropTypes.instanceOf(Element),
+  containerNode: PropTypes.instanceOf(Element),
   measure: PropTypes.func.isRequired,
   selectionRef: PropTypes.shape({
     current: PropTypes.instanceOf(Element)
