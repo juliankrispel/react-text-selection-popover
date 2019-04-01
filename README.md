@@ -4,8 +4,6 @@
 
 This module provides a way to render a popover/tooltip style component when text (inside a `contenteditable` element) is selected.
 
-> You'll need React.16.3 or higher to use this btw. If you strongly disagree please open [an issue](issues/new)
-
 [![NPM](https://img.shields.io/npm/v/react-text-selection-popover.svg)](https://www.npmjs.com/package/react-text-selection-popover) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
@@ -128,20 +126,10 @@ For more info on how to use the `Popover` component, please see below :)
 
 MIT © [juliankrispel](https://github.com/juliankrispel)
 
-## Wanna collaborate?
-
-Just ask me, I'll add you as collaborator! Any help I can get to make better software together I'll take it!
-
 ## Shoutouts
 
 This was originally written during some freelance work for [Spectrum](https://spectrum.chat/). Shoutout to their awesomeness for letting me do all my work for them in the open!
 
-## TODO:
-write test for all states:
-- Test pointerEvents are correct
-- Test isOpen overrides anything internal
-- Test placement strategies
-- Test refs
-- Test scroll events
-- Test resize events
-- Test events being only inside selection ref
+## Work with me?
+
+I freelance for clients around the world, hit me up on [my website](http://reactrocket.com) to get in touch about a project.
