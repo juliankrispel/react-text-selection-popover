@@ -1,3 +1,6 @@
+## 1.3.0
+- Allow specifying DOM node to mount a popover (via `appendTarget` prop)
+
 ## 1.2.0
 - Reposition Popover for resize and scroll events on viewport
 - Add scrollRef prop to give control to user for which scroll events to listen to
