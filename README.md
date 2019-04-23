@@ -6,6 +6,12 @@ This module provides a way to render a popover/tooltip style component when text
 
 [![NPM](https://img.shields.io/npm/v/react-text-selection-popover.svg)](https://www.npmjs.com/package/react-text-selection-popover) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+
+## Disclaimer
+
+- This only works inside an element with the `contenteditable` tag
+- This doesn't give you the selected text, [use the selection](https://developer.mozilla.org/en-US/docs/Web/API/Selection)
+
 ## Install
 
 ```bash
