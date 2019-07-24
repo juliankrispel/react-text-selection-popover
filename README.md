@@ -10,7 +10,7 @@ This module provides a way to render a popover/tooltip style component when text
 ## Disclaimer
 
 - This only works inside an element with the `contenteditable` tag
-- This doesn't give you the selected text, [use the selection](https://developer.mozilla.org/en-US/docs/Web/API/Selection)
+- This doesn't give you the selected text, [use the Selection API](https://developer.mozilla.org/en-US/docs/Web/API/Selection)
 
 ## Install
 
@@ -96,7 +96,7 @@ You might still want to use selection events to control whether the Popover is s
 
 Some applications have scrollable elements inside them other than `<body>`. By default Popover repositions itself when the viewport scrolls (`window` that is). If you're using the `Popover` inside a scrollable element you need to define the `scrollRef` prop like so:
 
-```
+```jsx
 class MyApp extends Component {
   constructor() {
     this.scrollRef = React.createRef()

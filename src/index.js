@@ -169,6 +169,7 @@ Popover.propTypes = {
   isOpen: PropTypes.bool
 };
 
+
 export default wrapPortal(
   withContentRect("bounds", "offset")(
     windowDimensions({
