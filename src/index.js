@@ -54,6 +54,7 @@ class Popover extends Component {
 
   render() {
     const {
+      isOpen,
       selectionRef,
       measureRef,
       gap,
@@ -68,8 +69,8 @@ class Popover extends Component {
 
     const { selectionPosition } = this.state;
     const isOpen =
-      typeof this.props.isOpen === "boolean"
-        ? this.props.isOpen
+      typeof isOpen === "boolean"
+        ? isOpen
         : this.state.isOpen;
 
     let style = {};
