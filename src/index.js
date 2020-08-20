@@ -14,18 +14,19 @@ class Popover extends Component {
     scrollRef: { current: window },
     placementStrategy: centerAboveOrBelow,
     gap: 5,
+    openAfterSelection: false,
   };
 
   state = {
     isPressed: false,
     selectionPosition: null,
     isTextSelected: false,
-    isOpen: false
+    isOpen: false,
   };
 
   updatePosition = () => {
     const browserSelection = document.getSelection();
-    const { onTextSelect, onTextUnselect } = this.props;
+    const { onTextSelect, onTextUnselect, openAfterSelection } = this.props;
     const selectionRef =
       this.props.selectionRef && this.props.selectionRef.current;
     const selectionPosition = getVisibleSelectionRect(window);
@@ -38,8 +39,15 @@ class Popover extends Component {
       selectionRef.contains(browserSelection.focusNode) === true
     ) {
       if (browserSelection.isCollapsed === false) {
-        onTextSelect && onTextSelect();
-        this.setState({ isTextSelected: true, isOpen: true });
+        onTextSelect && onTextSelect(!this.state.isPressed);
+        if (openAfterSelection) {
+          this.setState({
+            isTextSelected: true,
+            isOpen: !this.state.isPressed,
+          });
+        } else {
+          this.setState({ isTextSelected: true, isOpen: true });
+        }
       } else {
         onTextUnselect && onTextUnselect();
         this.setState({ isTextSelected: false, isOpen: false });
@@ -74,7 +82,11 @@ class Popover extends Component {
 
     let style = {};
 
-    if (selectionPosition !== null && contentRect.bounds.width != null && contentRect.bounds.width !== 0) {
+    if (
+      selectionPosition !== null &&
+      contentRect.bounds.width != null &&
+      contentRect.bounds.width !== 0
+    ) {
       /*
        * This style object only contains info for positioinng
        * the popover. It's prop, and these are the arguments passed
@@ -93,7 +105,7 @@ class Popover extends Component {
         selectionHeight: selectionPosition.height,
       });
 
-      style.pointerEvents = this.state.mousePressed === true ? "none" : "auto";
+      style.pointerEvents = this.state.isPressed === true ? "none" : "auto";
     }
 
     /*
@@ -119,24 +131,37 @@ class Popover extends Component {
       />,
       <EventListener
         key="on-mouse-up"
-        target={selectionRef && selectionRef.current ? selectionRef.current : document.body}
-        onMouseUp={() => this.setState({ mousePressed: false })}
+        target={
+          selectionRef && selectionRef.current
+            ? selectionRef.current
+            : document.body
+        }
+        onMouseUp={() => {
+          this.setState(
+            { isPressed: false },
+            this.props.openAfterSelection ? this.updatePosition : undefined
+          );
+        }}
       />,
       <EventListener
         key="on-mouse-down"
-        target={selectionRef && selectionRef.current ? selectionRef.current : document}
-        onMouseDown={() => this.setState({ mousePressed: true })}
+        target={
+          selectionRef && selectionRef.current ? selectionRef.current : document
+        }
+        onMouseDown={() => this.setState({ isPressed: true })}
       />,
-      selectionPosition == null || !isOpen || contentRect.bounds.width == 0 ? null : (
+      selectionPosition == null ||
+      !isOpen ||
+      contentRect.bounds.width == 0 ? null : (
         <div key="popup" className={className} style={style} ref={measureRef}>
           {children}
         </div>
-      )
+      ),
     ];
   }
 }
 
-const wrapPortal = Comp => ({ children, ...props }) =>
+const wrapPortal = (Comp) => ({ children, ...props }) =>
   createPortal(
     <Comp {...props}>
       <Fragment>{children}</Fragment>
@@ -148,13 +173,13 @@ Popover.propTypes = {
   containerNode: PropTypes.instanceOf(Element),
   measure: PropTypes.func.isRequired,
   selectionRef: PropTypes.shape({
-    current: PropTypes.instanceOf(Element)
+    current: PropTypes.instanceOf(Element),
   }),
   scrollRef: PropTypes.shape({
     current: PropTypes.oneOfType([
       PropTypes.instanceOf(Element),
-      PropTypes.instanceOf(window.constructor)
-    ])
+      PropTypes.instanceOf(window.constructor),
+    ]),
   }),
   children: PropTypes.node.isRequired,
   onTextSelect: PropTypes.func,
@@ -166,18 +191,20 @@ Popover.propTypes = {
   measureRef: PropTypes.func.isRequired,
   contentRect: PropTypes.object.isRequired,
   gap: PropTypes.number,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
 };
 
-
 export default wrapPortal(
-  withContentRect("bounds", "offset")(
+  withContentRect(
+    "bounds",
+    "offset"
+  )(
     windowDimensions({
       take: () => ({
         windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight
+        windowHeight: window.innerHeight,
       }),
-      debounce: onResize => debounce(onResize, 120)
+      debounce: (onResize) => debounce(onResize, 120),
     })(Popover)
   )
 );
