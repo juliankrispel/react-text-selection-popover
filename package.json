@@ -1,76 +1,38 @@
 {
   "name": "react-text-selection-popover",
-  "version": "1.3.2",
-  "description": "A popover component positioned according to the current selection in a contenteditable element",
+  "version": "2.0.0",
+  "description": "A component for rendering popovers according to your current text selection",
   "author": "juliankrispel",
   "license": "MIT",
   "repository": "juliankrispel/react-text-selection-popover",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
-  "scripts": {
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "flow": "flow",
-    "lint": "eslint src",
-    "test:watch": "react-scripts test --env=jsdom",
-    "build": "rollup -c",
-    "precommit": "lint-staged && yarn run lint && yarn run flow && yarn run test",
-    "prettier": "prettier src/**/*.js example/src/**/*.js --write",
-    "start": "rollup -c -w",
-    "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "dependencies": {
-    "invariant": "2.2.4",
-    "lodash.debounce": "^4.0.8",
-    "react-event-listener": "^0.6.6",
-    "react-measure": "2.1.2",
-    "react-window-dimensions": "1.0.2"
+    "use-text-selection": "^1.1.1"
+  },
+  "scripts": {
+    "build": "rm -rf dist && ./node_modules/.bin/tsc",
+    "prepublish": "npm run build",
+    "start": "parcel serve src/example/index.html",
+    "build:example": "rm -rf build-site && parcel build --public-url \"/use-text-selection/\" -d \"build-site\" src/example/index.html",
+    "deploy": "npm run build:example && gh-pages -d build-site"
   },
   "peerDependencies": {
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.1",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.1.4",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-config-standard-react": "^6.0.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-react": "^7.7.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "gh-pages": "^1.1.0",
-    "globby": "^8.0.1",
-    "prop-types": "^15.5.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "rollup": "^0.54.0",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-copy": "0.2.3",
-    "rollup-plugin-node-resolve": "^3.0.2",
-    "rollup-plugin-peer-deps-external": "^2.0.0",
-    "rollup-plugin-url": "^1.3.0"
+    "@emotion/css": "^11.1.3",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "emotion": "^11.0.0",
+    "gh-pages": "^3.1.0",
+    "parcel": "^1.12.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "typescript": "^4.1.3",
+    "typography": "^0.16.19"
   },
   "files": [
-    "dist",
-    "lib"
+    "dist"
   ]
 }
