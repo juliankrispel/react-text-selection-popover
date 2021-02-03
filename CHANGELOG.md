@@ -1,7 +1,8 @@
 ## 2.0.0
 - rewritten in typescript
+- removed all previous dependencies
 - low-level, less complex api (you can no control everything via a render prop)
-- simple wrapper around `use-text-selection`
+- `Popover` component is now simple wrapper around `use-text-selection`
 
 ## 1.3.0
 - Allow specifying DOM node to mount a popover (via `containerNode` prop)

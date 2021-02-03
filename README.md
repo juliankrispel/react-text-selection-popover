@@ -14,11 +14,14 @@ npm install --save react-text-selection-popover
 ## Usage
 
 ```tsx
+import css from '@emotion/css'
+
 <Popover
   render={
     ({ clientRect, isCollapsed, textContent }) => {
       if (clientRect == null || isCollapsed) return null
 
+      // I'm using emotion for this example but you can use anything really
       const style = css`
         position: absolute;
         left: ${clientRect.left + clientRect.width / 2}px;
