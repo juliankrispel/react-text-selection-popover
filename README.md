@@ -50,4 +50,4 @@ This was originally written during some freelance work for [Spectrum](https://sp
 
 ## Work with me?
 
-I freelance for clients around the world, hit me up on [my website](http://reactrocket.com) to get in touch about a project.
+I freelance building editors for companies. Hit me up on [my website](http://jkrsp.com) to get in touch about a project.
