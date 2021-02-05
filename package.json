@@ -1,6 +1,6 @@
 {
   "name": "react-text-selection-popover",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A component for rendering popovers according to your current text selection",
   "author": "Julian Krispel-Samsel",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "homepage": "https://juliankrispel.github.io/react-text-selection-popover/",
   "main": "dist/index.js",
   "dependencies": {
-    "use-text-selection": "^1.1.1"
+    "use-text-selection": "^1.1.3"
   },
   "scripts": {
     "build": "rm -rf dist && ./node_modules/.bin/tsc",

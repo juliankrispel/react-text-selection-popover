@@ -44,10 +44,18 @@ import css from '@emotion/css'
 />
 ```
 
+### Props
+
+| name | type | description |
+| --- | ---- | --- |
+| `render`    | `({ clientRect, isCollapsed, textContent }) => {}` | Render prop for rendering your popover, see above for usage |
+| `mount`     | `HTMLElement` | Dom Element that Popover will be rendered into (This component uses [React Portals](https://reactjs.org/docs/portals.html) |
+| `target`    | `HTMLElement` | Dom Element which the popover is constrained to |
+
 # Shoutouts
 
 This was originally written during some freelance work for [Spectrum](https://spectrum.chat/). Shoutout to their awesomeness for letting me do all my work for them in the open!
 
 ## Work with me?
 
-I freelance building editors for companies. Hit me up on [my website](http://jkrsp.com) to get in touch about a project.
+I build editors for companies, or help their teams do so. Hit me up on [my website](http://jkrsp.com) to get in touch about a project.

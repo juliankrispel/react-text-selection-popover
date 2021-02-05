@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { css } from '@emotion/css'
 import { Popover } from "..";
 
 export function Example() {
+  const [ref, setRef] = useState<HTMLElement>()
   return <div>
     <h1><pre>react-text-selection-popover</pre></h1>
     <p>This is an example using react-text-selection-popover</p>
-    <p>Select any text here and you'll see what I mean</p>
+    <p ref={(el) => el != null && setRef(el)}>Select any text here and you'll see what I mean</p>
     <p><pre>
     {`<Popover
   render={
@@ -34,6 +35,7 @@ export function Example() {
   }
 />`}</pre></p>
     <Popover
+      target={ref}
       render={
         ({ clientRect, isCollapsed, textContent }) => {
           if (clientRect == null || isCollapsed) return null
