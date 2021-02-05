@@ -48,8 +48,8 @@ import css from '@emotion/css'
 
 | name | type | description |
 | --- | ---- | --- |
-| `render`    | `({ clientRect, isCollapsed, textContent }) => {}` | Render prop for rendering your popover, see above for usage |
-| `mount`     | `HTMLElement` | Dom Element that Popover will be rendered into (This component uses [React Portals](https://reactjs.org/docs/portals.html) |
+| `render`  | `({ clientRect, isCollapsed, textContent }) => {}` | __required__ Render prop for rendering your popover, see above for usage |
+| `mount`     | `HTMLElement` |  Dom Element that Popover will be rendered into (This component uses [React Portals](https://reactjs.org/docs/portals.html). Defaults to `document.body` |
 | `target`    | `HTMLElement` | Dom Element which the popover is constrained to |
 
 # Shoutouts
