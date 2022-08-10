@@ -18,8 +18,8 @@
     "deploy": "npm run build:example && gh-pages -d build-site"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "devDependencies": {
     "@emotion/css": "^11.1.3",
