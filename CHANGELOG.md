@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Update peer dependencies to allow higher version of react
+
 ## 2.0.0
 - rewritten in typescript
 - removed all previous dependencies

@@ -1,6 +1,6 @@
 {
   "name": "react-text-selection-popover",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A component for rendering popovers according to your current text selection",
   "author": "Julian Krispel-Samsel",
   "license": "MIT",
@@ -18,8 +18,8 @@
     "deploy": "npm run build:example && gh-pages -d build-site"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0,^17.x,^18.x",
+    "react-dom": "^16.8.0,^17.x,^18.x"
   },
   "devDependencies": {
     "@emotion/css": "^11.1.3",
